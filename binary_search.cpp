@@ -1,4 +1,5 @@
 
+// 寻找指定元素并返回它的索引
 int BinarySearch(vector<int> vec, int elem) {
     if (vec.size() < 1) {
         return -1;
@@ -17,4 +18,22 @@ int BinarySearch(vector<int> vec, int elem) {
         }
     }
     return -1;
+}
+
+// 寻找第一个 >= elem 的元素
+int BinarySearch(vector<int> vec, int elem) {
+    int n = vec.size();
+    int left = 0;
+    int right = n - 1;
+    int ans = -1;
+    while (left <= right) {
+        int middle = left + (right - left) / 2;
+        if (vec[middle] < elem) {
+            left = middle + 1;
+        } else if (vec[middle] >= elem) {
+            right = middle - 1;
+            ans = middle;
+        }
+    }
+    return ans;
 }
