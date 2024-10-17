@@ -37,3 +37,23 @@ int BinarySearch(vector<int> vec, int elem) {
     }
     return ans;
 }
+
+/*
+查找最后一个 <= elem 的元素
+*/
+int BinarySearch(vector<int> vec, int elem) {
+    int n = vec.size();
+    int left = 0;
+    int right = n - 1;
+    int ans = -1;
+    while (left <= right) {
+        int middle = (left + right) / 2;
+        if (vec[middle] <= elem) {
+            left = middle + 1;
+            ans = middle;
+        } else if (vec[middle] > elem) {
+            right = middle - 1;
+        }
+    }
+    return ans;
+}
