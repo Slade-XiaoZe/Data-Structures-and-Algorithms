@@ -57,3 +57,19 @@ int BinarySearch(vector<int> vec, int elem) {
     }
     return ans;
 }
+
+// 搜到了就返回元素的索引，搜不到就返回应该插入的位置下标
+int BinarySearch(vector<int> &vec, int target) {
+    int n = vec.size();
+    int left = 0;
+    int right = n - 1;
+    while (left <= right) {
+        int middle = left + ((right - left) >> 1);
+        if (vec[middle] < target) {
+            left = middle + 1;
+        } else {
+            right = middle - 1;
+        }
+    }
+    return left;
+}
